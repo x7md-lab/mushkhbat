@@ -2,6 +2,9 @@
 layout: ./../layout/theme.astro
 setup: |
   import Youtube from "../components/Youtube.astro";
+title: "تجربة"
+date: "2022/06/08"
+dateModified: ""
 ---
 
 ## أهلا وسهلًا، تجربة

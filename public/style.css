@@ -325,6 +325,17 @@ table[role=grid] tbody tr:nth-child(odd) {
   background-color: var(--table-row-stripped-background-color);
 }
 
+/* */
+
+img[alt="logo"]{ 
+    max-height: 4.25rem;
+}
+@media (max-width: 720px) {
+	img[alt="logo"]{ 
+        max-height: 3.5rem;
+    }
+}
+
 figure {
     display: block;
     margin: 0;
@@ -366,6 +377,18 @@ ul.nav > a:hover {
 hr {
     border-color: var(--c-primary-2xlight);
 }
+
+.logoContainer, .datePost {
+    display: flex;
+    flex-direction: row;
+}
+.datePost {
+  justify-content: flex-end;
+}
+.logoContainer {
+  justify-content: center;
+}
+
 .sr-only {
     position: absolute;
     width: 1px;
