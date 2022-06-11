@@ -113,6 +113,10 @@
   outline-color: var(--c-primary);
 }
 
+*:focus-visible {
+  outline: none;
+}
+
 *::-moz-selection {
 	background-color: var(--c-primary);
 	color: var(--c-grey-8);
@@ -487,7 +491,7 @@ hr {
     align-items: center;
 }
 
-.comment-box {
+.comment-box, .comment-area  {
   margin-top: var(--unit);
 }
 
@@ -555,6 +559,10 @@ hr {
   -webkit-font-smoothing: antialiased;
   -webkit-rtl-ordering: logical;
   -webkit-border-image: none;
+}
+
+textarea:focus, textarea:focus-visible {
+  border-color: var(--c-primary-dark);
 }
 
 .login-btn svg {
