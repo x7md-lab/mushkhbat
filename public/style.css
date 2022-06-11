@@ -415,7 +415,7 @@ hr {
     height: 1.5rem;
 }
 
-.login-btn {
+button {
   margin: var(--unit);
   align-items: center;
   background-color: rgb(42, 42, 42);
@@ -477,7 +477,7 @@ hr {
   -webkit-border-image: none;
 }
 
-.login-btn:hover {
+button:hover {
   background-color: rgba(31,31,31, 1);
 }
 
@@ -568,6 +568,16 @@ textarea:focus, textarea:focus-visible {
 .login-btn svg {
   margin: 0 calc(var(--unit) / 2);
   width: calc(var(--unit) * 2);
+}
+
+.comment-control {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.comment-control button {
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
 footer svg {

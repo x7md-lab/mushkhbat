@@ -54,12 +54,17 @@ const {content} = Astro.props;
 							<img id="userpic" />
 							<span id="username"></span>
 						</div>
-						<div class="comment-area">
-							<textarea placeholder="أُكتب تعليقك..."></textarea>
-						</div>
+						<form class="comment-area">
+							<textarea placeholder="أُكتب تعليقك..." />
+							<div class="comment-control">
+								<button type="submit">
+									إرسال
+								</button>
+							</div>
+						</form>
 					</div>
 				<div>
-					التعليقات
+					جاري تحميل التعليقات...
 				</div>
 			</div>
 			</div>
