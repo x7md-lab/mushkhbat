@@ -481,9 +481,9 @@ button:hover {
   background-color: rgba(31,31,31, 1);
 }
 
-.user #userpic {
+.user #userpic, .user-pic {
     border-radius: 50%;
-    max-width: 3.25rem;
+    max-width: 3.15rem;
 }
 .user {
     display: flex;
@@ -493,6 +493,11 @@ button:hover {
 
 .comment-box, .comment-area  {
   margin-top: var(--unit);
+}
+
+.comment-text p {
+  margin-top: 0;
+  margin-right: calc(var(--unit) * 2);
 }
 
 .comment-area > textarea {
