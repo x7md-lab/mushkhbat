@@ -157,6 +157,10 @@ body {
 .variableColor:nth-child(10) { fill: var(--c-primary-xdark) }
 .variableColor:nth-child(11) { fill: var(--c-primary-2xlight) }
 
+* {
+  font-family: var(--fontFamily);
+}
+
 a {
     color: var(--c-primary-2xlight);
 }
@@ -358,7 +362,7 @@ body>footer ul, body>footer ul li {
     padding: 0;
     color: var(--muted-color);
     list-style: none;
-	margin-block: 0;
+	  margin-block: 0;
 }
 ul.nav {
 	display: inline-flex;
