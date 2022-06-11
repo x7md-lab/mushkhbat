@@ -406,6 +406,78 @@ hr {
 .h-6 {
     height: 1.5rem;
 }
+
+.login-btn {
+  margin: var(--unit);
+  align-items: center;
+  background-color: rgb(42, 42, 42);
+  background-image: none;
+  border-bottom-color: rgb(42, 42, 42);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-left-color: rgb(42, 42, 42);
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-color: rgb(42, 42, 42);
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-top-color: rgb(42, 42, 42);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  box-shadow: rgba(0, 0, 0, 0.043) 0px 2px 0px 0px;
+  box-sizing: border-box;
+  color: rgb(224, 224, 224);
+  cursor: pointer;
+  display: flex;
+  font-weight: 500;
+  justify-content: center;
+  letter-spacing: normal;
+  line-height: 20px;
+  outline-color: rgba(0, 0, 0, 0);
+  outline-offset: 2px;
+  outline-style: solid;
+  outline-width: 2px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  position: relative;
+  tab-size: 4;
+  text-align: center;
+  text-indent: 0px;
+  text-rendering: auto;
+  text-shadow: rgba(31, 31, 31, 0.5) 0px 0px 4px;
+  text-size-adjust: 100%;
+  text-transform: none;
+  transition-duration: 0.2s;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-transform, -webkit-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  width: 255px;
+  max-width: calc(100vw - var(--unit));
+  word-spacing: 0px;
+  writing-mode: horizontal-tb;
+  -webkit-font-smoothing: antialiased;
+  -webkit-border-image: none;
+}
+
+.login-btn:hover {
+  background-color: rgba(31,31,31, 1);
+}
+
+.login-btn svg {
+  margin: 0 calc(var(--unit) / 2);
+  width: calc(var(--unit) * 2);
+}
+
 footer svg {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
