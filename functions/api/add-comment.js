@@ -1,4 +1,4 @@
-export async function onRequestPost(request){
+export async function onRequestPost({request}){
     const { headers } = request;
     const contentType = headers.get('content-type') || '';
 
@@ -16,6 +16,6 @@ export async function onRequestPost(request){
         const info = JSON.stringify(data, null, 2);
         return new Response(info);
     } 
-          return new Response(JSON.stringify({done: false, error: "Not JSON"}));
+        return new Response(JSON.stringify({done: false, error: "Not JSON"}));
       
 }
