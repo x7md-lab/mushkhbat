@@ -481,6 +481,13 @@ button:hover {
   background-color: rgba(31,31,31, 1);
 }
 
+button:disabled {
+    border-style: dashed;
+    border-width: 1px;
+    opacity: 50%;
+    border-color: var(--c-primary-lightness);
+}
+
 .user #userpic, .user-pic {
     border-radius: 50%;
     max-width: 3.05rem;

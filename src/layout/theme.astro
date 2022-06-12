@@ -112,14 +112,11 @@ const {content} = Astro.props;
 		let comments = [];
 		loadComment();
 		async function loadComment(params) {
+			document.getElementById('commentsList').innerHTML = "";
 			try {
 			comments = await (await fetch(
 				`/api/get-comment/${document.body.dataset?.url}`
 			)).json();
-			} catch (error) {
-				document.getElementById("commentLoading").textContent = "حصلت مشكلة أثناء جلب التعليقات...";
-			}
-
 			if (comments.length > 0){
 				document.getElementById("commentLoading").hidden = true;
 				comments.forEach((comment)=> {
@@ -149,6 +146,9 @@ const {content} = Astro.props;
 				})
 			} else {
 				document.getElementById("commentLoading").textContent = "لا توجد تعليقات.";
+			}
+			} catch (error) {
+				document.getElementById("commentLoading").textContent = "حصلت مشكلة أثناء جلب التعليقات...";
 			}
 		}
 			// Initialize Firebase
