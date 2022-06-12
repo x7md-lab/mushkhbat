@@ -100,7 +100,7 @@ const {content} = Astro.props;
 		loadComment();
 		async function loadComment(params) {
 				comments = await (await fetch(
-				`/api/get-comment`
+				`/api/get-comment/${document.body.dataset?.url}`
 				)).json();
 			if (comments.length > 0){
 				document.getElementById("commentLoading").remove();
