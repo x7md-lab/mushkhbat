@@ -5,6 +5,7 @@ setup: |
 title: "تجربة"
 date: "2022/06/08"
 dateModified: ""
+url: post
 ---
 
 ## أهلا وسهلًا، تجربة

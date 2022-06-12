@@ -17,7 +17,7 @@ const {content} = Astro.props;
 		<script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
 		<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
 	</head>
-	<body>
+	<body data-url={content.url}>
 		<Navbar />
 		<main>
             <div class="title">
@@ -54,10 +54,10 @@ const {content} = Astro.props;
 							<img id="userpic" />
 							<span id="username"></span>
 						</div>
-						<form class="comment-area">
-							<textarea placeholder="أُكتب تعليقك..." />
+						<form class="comment-area" id="commentForm">
+							<textarea name="comment" placeholder="أُكتب تعليقك..." />
 							<div class="comment-control">
-								<button type="submit">
+								<button id="btnSubmit" type="submit">
 									إرسال
 								</button>
 							</div>
@@ -90,8 +90,17 @@ const {content} = Astro.props;
 				measurementId: "G-8GYLDCFYCR"
 			};
 			let comments = [];
-			comments = await (await fetch(
-				`https://script.google.com/macros/s/AKfycbwwaTAV5kq8KAcwljglw7H8ZE5NfuuiH965vdKECOgaIkDpxxZ0bEIk1LoyJJgzAWMypA/exec?type=get-comment&post=${new URL(location.href).pathname.replaceAll('/', '')}`
+
+			document.getElementById("commentForm").addEventListener('submit', function name(e) {
+				e.preventDefault();
+				let textComment = new FormData(e.target).get('comment');
+				let userComment = {...User, "commentText": textComment, postURL: document.body.dataset?.url};
+				console.log(userComment);
+			})
+		loadComment();
+		async function loadComment(params) {
+				comments = await (await fetch(
+				`/api/get-comment`
 				)).json();
 			if (comments.length > 0){
 				document.getElementById("commentLoading").remove();
@@ -123,6 +132,7 @@ const {content} = Astro.props;
 			} else {
 				document.getElementById("commentLoading").textContent = "لا توجد تعليقات.";
 			}
+		}
 			// Initialize Firebase
 			const app = initializeApp(firebaseConfig);
 			const analytics = getAnalytics(app);
@@ -148,7 +158,7 @@ const {content} = Astro.props;
 					// User is signed out
 					// ...
 					document.getElementById("login").hidden = false;
-					console.warn("nothing...");
+					document.getElementById("commentBox").hidden = true;
 				}
 			});
 
