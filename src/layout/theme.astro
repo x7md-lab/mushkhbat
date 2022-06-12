@@ -93,8 +93,15 @@ const {content} = Astro.props;
 			document.getElementById("commentForm").addEventListener('submit', function name(e) {
 				e.preventDefault();
 				let textComment = new FormData(e.target).get('comment');
-				let userComment = {...User, "commentText": textComment, postURL: document.body.dataset?.url};
-				console.log(userComment);
+				let userComment = {...User, "commentText": textComment, post: document.body.dataset?.url};
+				let req =  await fetch("/api/userComment",
+					{
+					method: 'POST',
+					headers: {
+					'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(userComment)
+					})
 			})
 		let comments = [];
 		loadComment();
