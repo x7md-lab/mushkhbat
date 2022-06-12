@@ -89,7 +89,6 @@ const {content} = Astro.props;
 				appId: "1:385603853271:web:02d74e043ad0b3d6e4c992",
 				measurementId: "G-8GYLDCFYCR"
 			};
-			let comments = [];
 
 			document.getElementById("commentForm").addEventListener('submit', function name(e) {
 				e.preventDefault();
@@ -97,11 +96,17 @@ const {content} = Astro.props;
 				let userComment = {...User, "commentText": textComment, postURL: document.body.dataset?.url};
 				console.log(userComment);
 			})
+		let comments = [];
 		loadComment();
 		async function loadComment(params) {
-				comments = await (await fetch(
+			try {
+			comments = await (await fetch(
 				`/api/get-comment/${document.body.dataset?.url}`
-				)).json();
+			)).json();
+			} catch (error) {
+				document.getElementById("commentLoading").textContent = "حصلت مشكلة أثناء جلب التعليقات...";
+			}
+
 			if (comments.length > 0){
 				document.getElementById("commentLoading").remove();
 				comments.forEach((comment)=> {
@@ -110,7 +115,6 @@ const {content} = Astro.props;
 					const userBox = document.createElement('div');
 					userBox.className = "user"
 					const userName = document.createElement('span');
-					userName.className = "";
 					userName.textContent = comment[2].name;
 					const userPic = document.createElement('img');
 					userPic.className = "user-pic"
@@ -118,6 +122,7 @@ const {content} = Astro.props;
 					userPic.src = comment[2].pic;
 					const cmText = document.createElement('div');
 					cmText.className = "comment-text";
+					cmText.dir = "auto";
 					const cmTextContent = document.createElement('p');
 					cmTextContent.textContent = comment[1];
 					/* */

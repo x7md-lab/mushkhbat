@@ -483,7 +483,7 @@ button:hover {
 
 .user #userpic, .user-pic {
     border-radius: 50%;
-    max-width: 3.15rem;
+    max-width: 3.05rem;
 }
 .user {
     display: flex;
@@ -497,7 +497,7 @@ button:hover {
 
 .comment-text p {
   margin-top: 0;
-  margin-right: calc(var(--unit) * 2);
+  margin-right: 3.05rem;
 }
 
 .comment-area > textarea {
