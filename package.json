@@ -12,7 +12,7 @@
     "astro": "^1.0.0-beta.38"
   },
   "dependencies": {
-    "rehype-figure-for-img": "^0.0.4",
+    "rehype-figure-for-img": "^0.0.6",
     "rehype-wrap-all": "^1.1.0",
     "remark-gfm": "^3.0.1",
     "remark-unwrap-images": "^3.0.1"
