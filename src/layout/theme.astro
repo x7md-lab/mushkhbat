@@ -90,7 +90,7 @@ const {content} = Astro.props;
 				measurementId: "G-8GYLDCFYCR"
 			};
 
-			document.getElementById("commentForm").addEventListener('submit', function name(e) {
+			document.getElementById("commentForm").addEventListener('submit', async function(e) {
 				e.preventDefault();
 				let textComment = new FormData(e.target).get('comment');
 				let userComment = {...User, "commentText": textComment, post: document.body.dataset?.url};
@@ -102,6 +102,7 @@ const {content} = Astro.props;
 					},
 					body: JSON.stringify(userComment)
 					})
+				loadComment();
 			})
 		let comments = [];
 		loadComment();
