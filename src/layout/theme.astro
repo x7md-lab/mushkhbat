@@ -55,7 +55,7 @@ const {content} = Astro.props;
 							<span id="username"></span>
 						</div>
 						<form class="comment-area" id="commentForm">
-							<textarea name="comment" placeholder="أُكتب تعليقك..." />
+							<textarea id="commentText" name="comment" placeholder="أُكتب تعليقك..." />
 							<div class="comment-control">
 								<button id="btnSubmit" type="submit">
 									إرسال
@@ -92,8 +92,10 @@ const {content} = Astro.props;
 
 			document.getElementById("commentForm").addEventListener('submit', async function(e) {
 				e.preventDefault();
+				const btn = document.getElementById('btnSubmit');
 				let textComment = new FormData(e.target).get('comment');
 				let userComment = {...User, "commentText": textComment, post: document.body.dataset?.url};
+				btn.disabled = true;
 				let req =  await fetch("/api/add-comment",
 					{
 					method: 'POST',
@@ -102,7 +104,10 @@ const {content} = Astro.props;
 					},
 					body: JSON.stringify(userComment)
 					})
+				await new Promise(r => setTimeout(r, 2000));
 				loadComment();
+				btn.disabled = false;
+				e.target.reset();
 			})
 		let comments = [];
 		loadComment();
@@ -116,7 +121,7 @@ const {content} = Astro.props;
 			}
 
 			if (comments.length > 0){
-				document.getElementById("commentLoading").remove();
+				document.getElementById("commentLoading").hidden = true;
 				comments.forEach((comment)=> {
 					const cmBox = document.createElement('div');
 					cmBox.className = "comment-box";
@@ -140,7 +145,7 @@ const {content} = Astro.props;
 
 					cmBox.append(userBox);
 					cmBox.append(cmText);
-					document.getElementById("commentsList").append(cmBox);
+					document.getElementById("commentsList").prepend(cmBox);
 				})
 			} else {
 				document.getElementById("commentLoading").textContent = "لا توجد تعليقات.";
