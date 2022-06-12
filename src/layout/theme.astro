@@ -104,12 +104,18 @@ const {content} = Astro.props;
 					},
 					body: JSON.stringify(userComment)
 					})
-				document.getElementById('commentsList').innerHTML = "";
-				await new Promise(r => setTimeout(r, 2000));
-				loadComment();
-				btn.disabled = false;
-				e.target.reset();
+				document.getElementById('commentsList').replaceChildren();
+				// Usage!
+				sleep(1500).then(() => {
+					loadComment();
+					btn.disabled = false;
+					e.target.reset();
+				});
+				
 			})
+			function sleep (time) {
+				return new Promise((resolve) => setTimeout(resolve, time));
+			}
 		let comments = [];
 		loadComment();
 		async function loadComment(params) {
