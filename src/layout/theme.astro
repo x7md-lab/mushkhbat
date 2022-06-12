@@ -104,7 +104,9 @@ const {content} = Astro.props;
 					},
 					body: JSON.stringify(userComment)
 					})
-				document.getElementById('commentsList').replaceChildren();
+				document.getElementById('commentsList').innerHTML = `
+				<p style="width: 100%; text-align: center;" id="commentLoading">جاري تحميل التعليقات...</p>
+				`;
 				// Usage!
 				sleep(1500).then(() => {
 					loadComment();
@@ -151,9 +153,11 @@ const {content} = Astro.props;
 					document.getElementById("commentsList").prepend(cmBox);
 				})
 			} else {
+				document.getElementById("commentLoading").hidden = false;
 				document.getElementById("commentLoading").textContent = "لا توجد تعليقات.";
 			}
 			} catch (error) {
+				document.getElementById("commentLoading").hidden = false;
 				document.getElementById("commentLoading").textContent = "حصلت مشكلة أثناء جلب التعليقات...";
 			}
 		}
