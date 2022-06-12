@@ -94,7 +94,7 @@ const {content} = Astro.props;
 				e.preventDefault();
 				let textComment = new FormData(e.target).get('comment');
 				let userComment = {...User, "commentText": textComment, post: document.body.dataset?.url};
-				let req =  await fetch("/api/userComment",
+				let req =  await fetch("/api/add-comment",
 					{
 					method: 'POST',
 					headers: {
