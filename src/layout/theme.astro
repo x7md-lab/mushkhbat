@@ -1,6 +1,7 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import Comment from "../components/Comment";
 const {content} = Astro.props;
 ---
 <html lang="ar" dir="rtl">
@@ -13,10 +14,7 @@ const {content} = Astro.props;
 		<link rel="stylesheet" href="/style.css">
 		<!-- add title if there is. -->
 		<title>{"مشخبط" + (content.title ? " - " + content.title : "")}</title>
-		<script src="https://unpkg.com/petite-vue" defer init></script>
-		<script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
-		<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
-	</head>
+		</head>
 	<body data-url={content.url}>
 		<Navbar />
 		<main>
@@ -31,7 +29,8 @@ const {content} = Astro.props;
             <article class="content">
                 <slot></slot>
             </article>
-			<div id="firebaseui-auth-container">
+			<Comment client:load />
+			<!-- <div id="firebaseui-auth-container">
 				<p>التعليقات: </p>
 				<div>
 					<div id="login" hidden>
@@ -67,141 +66,8 @@ const {content} = Astro.props;
 					<p style="width: 100%; text-align: center;" id="commentLoading">جاري تحميل التعليقات...</p>
 				</div>
 			</div>
-			</div>
+			</div> -->
         </main>
-		<script type="module" async>
-			window.User = {};
-			// Import the functions you need from the SDKs you need
-			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
-			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-analytics.js";
-			import { getAuth, signInWithRedirect, GoogleAuthProvider, TwitterAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
-			// TODO: Add SDKs for Firebase products that you want to use
-			// https://firebase.google.com/docs/web/setup#available-libraries
-		  
-			// Your web app's Firebase configuration
-			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-			const firebaseConfig = {
-				apiKey: "AIzaSyDIt9d_QOutwM7HM00NCueWKVHm_W9lNqQ",
-				authDomain: "mushkhbat-comment.firebaseapp.com",
-				projectId: "mushkhbat-comment",
-				storageBucket: "mushkhbat-comment.appspot.com",
-				messagingSenderId: "385603853271",
-				appId: "1:385603853271:web:02d74e043ad0b3d6e4c992",
-				measurementId: "G-8GYLDCFYCR"
-			};
-
-			document.getElementById("commentForm").addEventListener('submit', async function(e) {
-				e.preventDefault();
-				const btn = document.getElementById('btnSubmit');
-				let textComment = new FormData(e.target).get('comment');
-				let userComment = {...User, "commentText": textComment, post: document.body.dataset?.url};
-				btn.disabled = true;
-				let req =  await fetch("/api/add-comment",
-					{
-					method: 'POST',
-					headers: {
-					'Content-Type': 'application/json'
-					},
-					body: JSON.stringify(userComment)
-					})
-				document.getElementById('commentsList').innerHTML = `
-				<p style="width: 100%; text-align: center;" id="commentLoading">جاري تحميل التعليقات...</p>
-				`;
-				// Usage!
-				sleep(1500).then(() => {
-					loadComment();
-					btn.disabled = false;
-					e.target.reset();
-				});
-				
-			})
-			function sleep (time) {
-				return new Promise((resolve) => setTimeout(resolve, time));
-			}
-		let comments = [];
-		loadComment();
-		async function loadComment(params) {
-			try {
-			comments = await (await fetch(
-				`/api/get-comment/${document.body.dataset?.url}`
-			)).json();
-			if (comments.length > 0){
-				document.getElementById("commentLoading").hidden = true;
-				comments.forEach((comment)=> {
-					const cmBox = document.createElement('div');
-					cmBox.className = "comment-box";
-					const userBox = document.createElement('div');
-					userBox.className = "user"
-					const userName = document.createElement('span');
-					userName.textContent = comment[2].name;
-					const userPic = document.createElement('img');
-					userPic.className = "user-pic"
-					userPic.crossOrigin = "Anonymous";
-					userPic.src = comment[2].pic;
-					const cmText = document.createElement('div');
-					cmText.className = "comment-text";
-					cmText.dir = "auto";
-					const cmTextContent = document.createElement('p');
-					cmTextContent.textContent = comment[1];
-					/* */
-					userBox.append(userPic);
-					userBox.append(userName);
-					cmText.append(cmTextContent);
-
-					cmBox.append(userBox);
-					cmBox.append(cmText);
-					document.getElementById("commentsList").prepend(cmBox);
-				})
-			} else {
-				document.getElementById("commentLoading").hidden = false;
-				document.getElementById("commentLoading").textContent = "لا توجد تعليقات.";
-			}
-			} catch (error) {
-				document.getElementById("commentLoading").hidden = false;
-				document.getElementById("commentLoading").textContent = "حصلت مشكلة أثناء جلب التعليقات...";
-			}
-		}
-			// Initialize Firebase
-			const app = initializeApp(firebaseConfig);
-			const analytics = getAnalytics(app);
-			const auth = getAuth(app);
-			const providerG = new GoogleAuthProvider();
-			const providerTW = new TwitterAuthProvider();
-			providerG.addScope('profile');
-			providerG.addScope('email');
-			onAuthStateChanged(auth, (user) => {
-				document.getElementById("login").hidden = true;
-				if (user) {
-					// User is signed in, see docs for a list of available properties
-					// https://firebase.google.com/docs/reference/js/firebase.User
-					const uid = user.uid;
-					console.log(uid);
-					User = {uid: uid, name: user.displayName, pic: user.photoURL}
-					document.getElementById("commentBox").hidden = false;
-					document.getElementById("username").textContent = user.displayName;
-					document.getElementById("userpic").src = user.photoURL;
-					document.getElementById("userpic").crossOrigin = "Anonymous";
-					// ...
-				} else {
-					// User is signed out
-					// ...
-					document.getElementById("login").hidden = false;
-					document.getElementById("commentBox").hidden = true;
-				}
-			});
-
-			document.getElementById("twitter").addEventListener("click", 
-			function () {
-				signInWithRedirect(auth, providerTW);
-			}
-				)
-			document.getElementById("gmail").addEventListener("click", 
-			function () {
-				signInWithRedirect(auth, providerG);
-			}
-				)
-			// var ui = new firebaseui.auth.AuthUI(app.auth());
-		  </script>
 		<Footer />
 	</body>
 </html>

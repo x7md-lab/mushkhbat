@@ -287,6 +287,9 @@ main {
     margin-left: calc(-1 * var(--space-2xl));
     max-width: 100%;
 }
+.content img {
+  min-height: 380px;
+}
 iframe[src*="you"] {
     margin: auto;
 	margin-top: var(--space-s);
@@ -337,11 +340,6 @@ table[role=grid] tbody tr:nth-child(odd) {
 
 img[alt="logo"]{ 
     max-height: 4.25rem;
-}
-@media (max-width: 720px) {
-	img[alt="logo"]{ 
-        max-height: 3.5rem;
-    }
 }
 
 figure {
@@ -595,4 +593,16 @@ textarea:focus, textarea:focus-visible {
 footer svg {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+}
+
+
+/*Media*/
+
+@media (max-width: 720px) {
+	img[alt="logo"]{ 
+        max-height: 3.5rem;
+  }
+  .content img {
+    min-height: 100px;
+  }
 }
