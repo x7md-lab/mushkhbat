@@ -18,17 +18,9 @@ const {content} = Astro.props;
 	<body data-url={content.url}>
 		<Navbar />
 		<main>
-            <div class="title">
-                <h1>{content.title}</h1>
-				<div class="datePost">
-					<time class="textSize-s">{content.dateModified || content.date}</time>
-				</div>
-				<hr >
-            </div>
-
-            <article class="content">
+            <div class="content">
                 <slot></slot>
-            </article>
+			</div>
 			<!-- <Comment client:load /> -->
         </main>
 		<Footer />
