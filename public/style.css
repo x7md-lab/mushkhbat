@@ -166,10 +166,6 @@ body {
 .variableColor:nth-child(10) { fill: var(--c-primary-xdark) }
 .variableColor:nth-child(11) { fill: var(--c-primary-2xlight) }
 
-* {
-  font-family: var(--fontFamily);
-}
-
 a {
     color: var(--c-primary-2xlight);
 }
@@ -636,10 +632,21 @@ textarea:focus, textarea:focus-visible {
 }
 
 footer svg {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
+.astro-code {
+  padding: calc(var(--unit) * 2);
+  direction: ltr;
+  unicode-bidi: isolate;
+  line-height: normal;
+  font-family: 'IBM Plex Mono', Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;;
+}
+
+.astro-code .line {
+  font-family: 'Courier New', Courier, monospace !important;
+}
 
 /*Media*/
 @media (max-width: 900px) {
