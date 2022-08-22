@@ -16,7 +16,7 @@ const {content} = Astro.props;
 		<title>{"مشخبط" + (content.title ? " - " + content.title : "")}</title>
 		</head>
 	<body data-url={content.url}>
-		<Navbar />
+		<Navbar from="right" />
 		<main>
             <div class="content">
                 <slot></slot>
