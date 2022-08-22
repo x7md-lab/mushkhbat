@@ -396,9 +396,16 @@ hr {
     border-color: var(--c-primary-2xlight);
 }
 
+.logoContainer.form-right {
+  flex-direction: row-reverse;
+}
+
+.logoContainer.form-left {
+  flex-direction: row;
+}
+
 .logoContainer, .datePost {
     display: flex;
-    flex-direction: row;
     align-items: center;
 }
 .logoContainer a {
@@ -409,8 +416,16 @@ hr {
 .menu {
   display:none;
   position: absolute;
+}
+
+.menu.form-right {
+  left: 0;
+}
+
+.menu.form-left {
   right: 0;
 }
+
 button.menu-btn {
   width: auto;
   background: transparent;

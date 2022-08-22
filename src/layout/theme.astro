@@ -1,8 +1,11 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-import Comment from "../components/Comment";
+// import Comment from "../components/Comment";
+import Youtube from "../components/Youtube.astro";
+
 const {content} = Astro.props;
+
 ---
 <html lang="ar" dir="rtl">
 	<head>
@@ -16,7 +19,7 @@ const {content} = Astro.props;
 		<title>{"مشخبط" + (content.title ? " - " + content.title : "")}</title>
 		</head>
 	<body data-url={content.url}>
-		<Navbar />
+		<Navbar from="right" />
 		<main>
             <div class="title">
                 <h1>{content.title}</h1>
