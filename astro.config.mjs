@@ -12,10 +12,10 @@ export default defineConfig({
   integrations: [react(), mdx(
     {
       remarkPlugins: [remarkUnwrap, remarkGfm],
-      rehypePlugins: [rehypeImg, rehypeWrap({
-      selector: 'table',
-      wrapper: 'figure'
-    })]
+      rehypePlugins: [rehypeImg, [rehypeWrap, {
+        selector: 'table',
+        wrapper: 'figure'
+      }]]
     }
   )]
 });
