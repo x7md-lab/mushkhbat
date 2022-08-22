@@ -603,7 +603,7 @@ footer svg {
 
 .shiki {
   padding: calc(var(--unit) * 2);
-  overflow: scroll;
+  overflow-x: overlay;
   direction: ltr;
   unicode-bidi: isolate;
   line-height: normal;
