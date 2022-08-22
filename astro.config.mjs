@@ -8,7 +8,7 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
   markdown: {
-    remarkPlugins: [["remark-gfm", {}], ['remark-unwrap-images', {}]],
+    remarkPlugins: [['remark-unwrap-images', {}]],
     rehypePlugins: [['rehype-figure-for-img', {}], ['rehype-wrap-all', {
       selector: 'table',
       wrapper: 'figure'

@@ -601,7 +601,7 @@ footer svg {
   margin-right: 0.5rem;
 }
 
-.astro-code {
+.shiki {
   padding: calc(var(--unit) * 2);
   direction: ltr;
   unicode-bidi: isolate;
@@ -609,8 +609,14 @@ footer svg {
   font-family: 'IBM Plex Mono', Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;;
 }
 
-.astro-code .line {
+code .line {
   font-family: 'Courier New', Courier, monospace !important;
+}
+
+.language-id {
+  user-select: none;
+  padding-bottom: calc(var(--unit) * 2);
+  opacity: 0.35;
 }
 
 /*Media*/
