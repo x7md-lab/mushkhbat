@@ -3,9 +3,33 @@ import Navbar from "@components/Navbar.astro";
 import Footer from "@components/Footer.astro";
 // import Comment from "@components/Comment";
 import Youtube from "@components/Youtube.astro";
-
 const {content} = Astro.props;
-
+const isReview = content.isReview;
+let review = {}
+if (isReview){
+review = { review: {
+			  "@type": "Review",
+			  "itemReviewed": {
+				"@type": "TVSeries",
+				"image": content.image,
+				"name": content.itemName,
+			  },
+			  "reviewRating": {
+				"@type": "Rating",
+				"ratingValue": content.review
+			  },
+			  "name": content.title,
+			  "author": {
+				"@type": "Person",
+				"name": "حمد بنقالي"
+			  },
+			  "publisher": {
+				"@type": "Person",
+				"name": "حمد بنقالي",
+			  }
+			}
+			}
+}
 ---
 <html lang="ar" dir="rtl">
 	<head>
@@ -29,12 +53,29 @@ const {content} = Astro.props;
 				<hr >
             </div>
 
-            <article class="content">
+            <article class="content" id="article">
                 <slot></slot>
             </article>
 			<!-- <Comment client:load /> -->
         </main>
 		<Footer />
 		<script is:inline src="/script.js"></script>
+		<script type="application/ld+json" 
+		set:html={
+		JSON.stringify(
+			{
+				"@context": "https://schema.org",
+				"@type": "BlogPosting",
+				"headline": content.title,
+				"image": content.image,
+				"datePublished": new Date(content.date).toISOString(),
+				"dateModified": "2015-02-05T09:20:00+08:00",
+				"author": {
+					"@type": "Person",
+					"name": "حمد بنقالي",
+					"url": "https://x7md.net/about-me"
+					}, ...review })
+		}>
+		</script>
 	</body>
 </html>
