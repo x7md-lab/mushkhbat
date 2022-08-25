@@ -1,6 +1,6 @@
 import rss from '@astrojs/rss';
 const postImportResult = import.meta.glob('./**/*.mdx', { eager: true });
-const posts = Object.values(postImportResult);
+const posts = Object.values(postImportResult).sort((a, b) => new Date(b.frontmatter?.date) - new Date(a.frontmatter?.date));
 
 export const get = () => rss({
     // `<title>` field in output xml

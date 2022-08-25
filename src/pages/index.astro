@@ -1,0 +1,30 @@
+---
+import Pages from "@layouts/pages.astro";
+---
+<Pages content={{title: "الصفحة الرئيسية"}}>
+    <div class="pt-3">
+		<section>
+			<h1>مشخبط</h1>
+			<p>
+				آراء، تدوينات، وكل ما قد يصلح للتدوين.
+			</p>
+			<p>
+				كرتون، أنمي، أنطباعات، موسيقى، وتقيمات شخصية...
+			</p>
+		</section>
+	</div>
+</Pages>
+<style>
+	h1 {
+    color: var(--c-primary);
+	}
+	.pt-3 {
+		padding-top: 0.75rem;
+	}
+	section {
+		text-align: center;
+    	padding: calc(var(--unit) * 2);
+		padding-top: calc(var(--unit) * 4);
+		padding-bottom: calc(var(--unit) * 4);
+	}
+</style>

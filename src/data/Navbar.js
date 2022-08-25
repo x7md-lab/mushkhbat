@@ -1,6 +1,6 @@
 const data = [
     {name: "الصفحة الرئيسية", link: "/"},
-    {name: "تدوينة", link:"/post"},
+    {name: "تدوينة", link:"/blog/tsurekano"},
     {name: "المواضيع", link:"/topics"},
     {name: "التدوينات", link: "/blogs"}
 ]

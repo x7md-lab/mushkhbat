@@ -635,6 +635,12 @@ code .line {
   opacity: 0.35;
 }
 
+blockquote {
+  margin: calc(var(--unit) * 1.5);
+  padding-inline-start: var(--unit);
+  border-right: var(--c-primary-xdark) solid calc(var(--unit) / 2);
+}
+
 /*Media*/
 @media (max-width: 900px) {
   .nav-list {

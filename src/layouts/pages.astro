@@ -1,7 +1,7 @@
 ---
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
-import Comment from "../components/Comment";
+import Navbar from "@components/Navbar.astro";
+import Footer from "@components/Footer.astro";
+import Comment from "@components/Comment";
 const {content} = Astro.props;
 ---
 <html lang="ar" dir="rtl">
@@ -13,9 +13,9 @@ const {content} = Astro.props;
 		<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@155;435;600;900&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="/style.css">
 		<!-- add title if there is. -->
-		<title>{"مشخبط" + (content.title ? " - " + content.title : "")}</title>
+		<title>{"مشخبط" + (content?.title ? " - " + content?.title : "")}</title>
 		</head>
-	<body data-url={content.url}>
+	<body data-url={content?.url}>
 		<Navbar from="right" />
 		<main>
             <div class="content">

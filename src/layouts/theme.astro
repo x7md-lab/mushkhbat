@@ -1,8 +1,8 @@
 ---
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
-// import Comment from "../components/Comment";
-import Youtube from "../components/Youtube.astro";
+import Navbar from "@components/Navbar.astro";
+import Footer from "@components/Footer.astro";
+// import Comment from "@components/Comment";
+import Youtube from "@components/Youtube.astro";
 
 const {content} = Astro.props;
 
@@ -24,7 +24,7 @@ const {content} = Astro.props;
             <div class="title">
                 <h1>{content.title}</h1>
 				<div class="datePost">
-					<time class="textSize-s">{content.dateModified || content.date}</time>
+					<p>{content.dateModified ? "عُدلت" : "كُتبت"} في <time class="textSize-s">{content.dateModified || content.date}</time></p>
 				</div>
 				<hr >
             </div>
