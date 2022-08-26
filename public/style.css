@@ -105,6 +105,43 @@
 	--switchLabelGap: var(--space-s);
 }
 
+/* vazirmatn-200 - latin_arabic */
+@font-face {
+  font-family: 'Vazirmatn';
+  font-style: normal;
+  font-weight: 200;
+  src: local(''),
+       url('/assets/fonts/vazirmatn-v6-latin_arabic-200.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/vazirmatn-v6-latin_arabic-200.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* vazirmatn-regular - latin_arabic */
+@font-face {
+  font-family: 'Vazirmatn';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('/assets/fonts/vazirmatn-v6-latin_arabic-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/vazirmatn-v6-latin_arabic-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* vazirmatn-500 - latin_arabic */
+@font-face {
+  font-family: 'Vazirmatn';
+  font-style: normal;
+  font-weight: 500;
+  src: local(''),
+       url('/assets/fonts/vazirmatn-v6-latin_arabic-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/vazirmatn-v6-latin_arabic-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* vazirmatn-900 - latin_arabic */
+@font-face {
+  font-family: 'Vazirmatn';
+  font-style: normal;
+  font-weight: 900;
+  src: local(''),
+       url('/assets/fonts/vazirmatn-v6-latin_arabic-900.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/vazirmatn-v6-latin_arabic-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
