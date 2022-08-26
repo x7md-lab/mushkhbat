@@ -291,9 +291,6 @@ main {
     margin-left: calc(-1 * var(--space-2xl));
     max-width: 100%;
 }
-.content img {
-  min-height: 380px;
-}
 iframe[src*="you"] {
     margin: auto;
 	  margin-top: var(--space-s);
@@ -653,8 +650,5 @@ blockquote {
 @media (max-width: 720px) {
 	img[alt="logo"]{ 
         max-height: 2.85rem;
-  }
-  .content img {
-    min-height: 100px;
   }
 }

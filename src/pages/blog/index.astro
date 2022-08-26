@@ -20,12 +20,15 @@ const posts = Object.values(postImportResult).sort((a, b) => new Date(b.frontmat
                         <li class="article">
                            
                             <article>
-                            <a href={item.url}>
+                            <img src={item.frontmatter?.imagePrv || item.frontmatter?.image} />
+                            <section>
+                                <a href={item.url}>
                                 <h1>{item.frontmatter?.title}</h1>
-                            </a>
+                                </a>
                                 <p>
                                     {item.frontmatter?.desc}
                                 </p>
+                            </section>
                             </article>
                             
                         </li>
@@ -54,5 +57,12 @@ const posts = Object.values(postImportResult).sort((a, b) => new Date(b.frontmat
     }
     .article a {
         color: inherit;
+    }
+    article {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 25px;
+    grid-row-gap: 0px;
     }
 </style>
