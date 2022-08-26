@@ -1,0 +1,80 @@
+---
+const posts =  [...await Astro.glob('../blog/*.mdx')].sort((a, b) => new Date(b.frontmatter?.date) - new Date(a.frontmatter?.date));
+const tags =  [
+        ... new Set(posts.map(post => post.frontmatter.tags).flat())
+    ];
+import tagsName from "@data/Topics.js"
+import Pages from "@layouts/pages.astro";
+---
+<Pages content={{title: "التدوينات"}}>
+    <div class="pt-3">
+		<section id="hero">
+			<h1 class="title">قائمة المواضيع</h1>
+			<p>
+                تستطيع تفقد تدوينات تتحدث عن موضوع معين.
+			</p>
+		</section>
+        <section>
+            <ol>
+                {tags.map((item)=> {
+                    return (
+                        <li class="topic">
+                           <section>
+                            <h2>
+                                {tagsName[item].name}
+                            </h2>
+                           </section>
+                        </li>
+                    )
+                })}
+            </ol>
+        </section>
+	</div>
+</Pages>
+<style>
+	h1.title {
+    color: var(--c-primary);
+	}
+	.pt-3 {
+		padding-top: 0.75rem;
+	}
+	section#hero {
+		text-align: center;
+    	padding: calc(var(--unit) * 2);
+		padding-top: calc(var(--unit) * 4);
+		padding-bottom: calc(var(--unit) * 4);
+	}
+    li.topic {
+        text-align: right;
+        list-style: none;
+    }
+    .article a {
+        color: inherit;
+    }
+    img.image_prv {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    aspect-ratio: 16/9;
+    }
+    article {
+    display: grid;
+    grid-template-columns: 0.5fr auto;
+    grid-template-rows: 1fr;
+    grid-column-gap: 25px;
+    }
+    ol, ul {
+    padding-inline-start: 0;
+    }
+    hr {
+    border-color: var(--c-primary-2xlight);
+    opacity: 0.5;
+    background: var(--c-primary-2xlight);
+    }
+    @media (max-width: 924px){
+        article {
+            grid-template-columns: auto;
+        }
+    }
+</style>
