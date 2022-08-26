@@ -5,7 +5,7 @@ const posts = Object.values(postImportResult).sort((a, b) => new Date(b.frontmat
 ---
 <Pages content={{title: "التدوينات"}}>
     <div class="pt-3">
-		<section>
+		<section id="hero">
 			<h1 class="title">قائمة التدوينات</h1>
 			<p>
                 حاول البحث في 
@@ -20,7 +20,9 @@ const posts = Object.values(postImportResult).sort((a, b) => new Date(b.frontmat
                         <li class="article">
                            
                             <article>
-                            <img src={item.frontmatter?.imagePrv || item.frontmatter?.image} />
+                            <a href={item.url}>
+                                <img class="image_prv" src={item.frontmatter?.imagePrv || item.frontmatter?.image} />
+                            </a>
                             <section>
                                 <a href={item.url}>
                                 <h1>{item.frontmatter?.title}</h1>
@@ -30,7 +32,7 @@ const posts = Object.values(postImportResult).sort((a, b) => new Date(b.frontmat
                                 </p>
                             </section>
                             </article>
-                            
+                            <hr />
                         </li>
                     )
                 })}
@@ -45,7 +47,7 @@ const posts = Object.values(postImportResult).sort((a, b) => new Date(b.frontmat
 	.pt-3 {
 		padding-top: 0.75rem;
 	}
-	section {
+	section#hero {
 		text-align: center;
     	padding: calc(var(--unit) * 2);
 		padding-top: calc(var(--unit) * 4);
@@ -58,11 +60,30 @@ const posts = Object.values(postImportResult).sort((a, b) => new Date(b.frontmat
     .article a {
         color: inherit;
     }
+    img.image_prv {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    aspect-ratio: 16/9;
+    }
     article {
     display: grid;
-    grid-template-columns: 0.5fr 1fr;
+    grid-template-columns: 0.5fr auto;
     grid-template-rows: 1fr;
     grid-column-gap: 25px;
-    grid-row-gap: 0px;
+    }
+    ol, ul {
+    padding-inline-start: 0;
+    }
+    hr {
+    border-color: var(--c-primary-2xlight);
+    opacity: 0.5;
+    background: var(--c-primary-2xlight);
+    }
+    @media (max-width: 924px){
+        article {
+            grid-template-columns: auto;
+        }
     }
 </style>
