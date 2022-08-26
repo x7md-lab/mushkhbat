@@ -31,7 +31,7 @@ review = { review: {
 			}
 }
 const toHijri = (date) => {
-return new Date("2022/08/26").toLocaleDateString(
+return new Date(date).toLocaleDateString(
   'ar-SA-u-ca-islamic-umalqura',
   { timeZone: 'Asia/Riyadh', month: 'numeric', day: 'numeric', year: 'numeric' }
 )
