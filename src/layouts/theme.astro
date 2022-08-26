@@ -10,7 +10,7 @@ if (isReview){
 review = { review: {
 			  "@type": "Review",
 			  "itemReviewed": {
-				"@type": "TVSeries",
+				"@type": content.itemType,
 				"image": content.image,
 				"name": content.itemName,
 			  },
@@ -30,6 +30,12 @@ review = { review: {
 			}
 			}
 }
+const toHijri = (date) => {
+return new Date("2022/08/26").toLocaleDateString(
+  'ar-SA-u-ca-islamic-umalqura',
+  { timeZone: 'Asia/Riyadh', month: 'numeric', day: 'numeric', year: 'numeric' }
+)
+}
 ---
 <html lang="ar" dir="rtl">
 	<head>
@@ -48,7 +54,7 @@ review = { review: {
             <div class="title">
                 <h1>{content.title}</h1>
 				<div class="datePost">
-					<p>{content.dateModified ? "عُدلت" : "كُتبت"} في <time class="textSize-s">{content.dateModified || content.date}</time></p>
+					<p>{content.dateModified ? "عُدلت" : "كُتبت"} في <time class="textSize-s" datetime={new Date(content.dateModified || content.date).toISOString()} >{toHijri(content.dateModified || content.date)}</time></p>
 				</div>
 				<hr >
             </div>
@@ -69,7 +75,7 @@ review = { review: {
 				"headline": content.title,
 				"image": content.image,
 				"datePublished": new Date(content.date).toISOString(),
-				"dateModified": "2015-02-05T09:20:00+08:00",
+				...(content?.dateModified ? new Date(content?.dateModified).toISOString() : {}),
 				"author": {
 					"@type": "Person",
 					"name": "حمد بنقالي",
