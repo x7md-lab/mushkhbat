@@ -15,7 +15,7 @@ import Pages from "@layouts/pages.astro";
 			</p>
 		</section>
         <section>
-            <ol>
+            <ul>
                 {tags.map((item)=> {
                     return (
                         <li class="topic">
@@ -23,11 +23,19 @@ import Pages from "@layouts/pages.astro";
                             <h2>
                                 {tagsName[item].name}
                             </h2>
+                            <ol>
+                                {posts.filter((itm) => itm.frontmatter.tags == item)
+                                .map((i)=> <li>
+                                    <a href={i.url}>{i.frontmatter.title}</a>
+                                    </li>)
+                                }
+                            </ol>
+                            <hr />
                            </section>
                         </li>
                     )
                 })}
-            </ol>
+            </ul>
         </section>
 	</div>
 </Pages>
