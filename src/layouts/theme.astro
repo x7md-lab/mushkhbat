@@ -1,9 +1,11 @@
 ---
 import Navbar from "@components/Navbar.astro";
 import Footer from "@components/Footer.astro";
+import { Seo } from "astro-seo-meta"
 // import Comment from "@components/Comment";
 import Youtube from "@components/Youtube.astro";
 const {content} = Astro.props;
+const {origin} = Astro.url;
 const isReview = content.isReview;
 let review = {}
 if (isReview){
@@ -36,11 +38,24 @@ return new Date(date).toLocaleDateString(
   { timeZone: 'Asia/Riyadh', month: 'numeric', weekday: 'long', day: 'numeric', year: 'numeric' }
 )
 }
+const urlFix = (urlString)=> {
+	if (urlString.indexOf('http://') === 0 || urlString.indexOf('https://') === 0){
+		return urlString;
+	}
+	return new URL(urlString, origin).href
+}
 ---
 <html lang="ar" dir="rtl">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
+		<Seo 
+		title={"مشخبط" + (content.title ? " - " + content.title : "")}
+		description={content.desc}
+		colorScheme="dark"
+		twitter={{site: "@mushkhbat", image: urlFix(content.image)}}
+		facebook={{image: urlFix(content.image)}}
+		/>
 		<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@155;435;600;900&display=swap" rel="stylesheet"> -->
@@ -73,7 +88,7 @@ return new Date(date).toLocaleDateString(
 				"@context": "https://schema.org",
 				"@type": "BlogPosting",
 				"headline": content.title,
-				"image": content.image,
+				"image": urlFix(content.image),
 				"datePublished": new Date(content.date).toISOString(),
 				...(content?.dateModified ? new Date(content?.dateModified).toISOString() : {}),
 				"author": {

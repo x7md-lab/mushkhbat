@@ -1,0 +1,44 @@
+---
+import Pages from "@layouts/pages.astro";
+---
+<Pages content={{title: "حول"}}>
+    <div class="pt-3">
+		<section>
+			<h1 class="title">حول مشخبط</h1>
+			<p>
+				مشخبط ببساطة هي مدونة شخصية... تحوي أمور أهتماماتي الشخصية.
+			</p>
+		</section>
+		<section class="content">
+			<h2>قصة مشخبط</h2>
+			<p>
+				بدايةً، أدعى حمد بنقالي، وتستطيع أن تصفني بأني شخص مهووس بأمور الحاسوب إلى حد ما، لذلك أنشأت مدونة مشخبط لمشاركة آرائي وأهتماماتي على الإنترنت...
+			</p>
+			<p>
+				أنا أيضًا مبرمج مواقع، حاصل على الوسام الذهب في تحديات جافاسكربت في منصة سطر
+				كما أهتم كثيرًا بأمر التصميم الرقمي (تصميم الواجهات خصوصًا)، والترجمة، ومفهوم المعرفة الحرة، وكذلك أهوى متابعة الكرتون، والأنمي كذلك.
+			</p>
+			<p>
+				أملك أيضًا مدونة شخصية أخرى متخصصة بالأمور التقنية، تستطيع تفقدها عبر الرابط
+				<a href="https://x7md.net/">x7md.net</a>
+			</p>
+		</section>
+	</div>
+</Pages>
+<style>
+	h1.title {
+    color: var(--c-primary);
+	}
+	.pt-3 {
+		padding-top: 0.75rem;
+	}
+	section {
+		text-align: center;
+    	padding: calc(var(--unit) * 2);
+		padding-top: calc(var(--unit) * 4);
+		padding-bottom: calc(var(--unit) * 4);
+	}
+	section.content {
+		text-align: right;
+	}
+</style>

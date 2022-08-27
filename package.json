@@ -18,6 +18,7 @@
   "dependencies": {
     "@astrojs/rss": "^1.0.0",
     "@astrojs/sitemap": "^1.0.0",
+    "astro-seo-meta": "^0.0.5",
     "rehype-figure-for-img": "^0.0.6",
     "rehype-wrap-all": "^1.1.0",
     "remark-gfm": "^3.0.1",

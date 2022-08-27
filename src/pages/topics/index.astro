@@ -15,7 +15,7 @@ import Pages from "@layouts/pages.astro";
 			</p>
 		</section>
         <section>
-            <ul>
+            <ul class="topic">
                 {tags.map((item)=> {
                     return (
                         <li class="topic">
@@ -52,37 +52,25 @@ import Pages from "@layouts/pages.astro";
 		padding-top: calc(var(--unit) * 4);
 		padding-bottom: calc(var(--unit) * 4);
 	}
-    li.topic {
-        text-align: right;
-        list-style: none;
-    }
-    .article a {
-        color: inherit;
-    }
-    img.image_prv {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    object-position: center;
-    aspect-ratio: 16/9;
-    }
-    article {
-    display: grid;
-    grid-template-columns: 0.5fr auto;
-    grid-template-rows: 1fr;
-    grid-column-gap: 25px;
+    hr {
+        border-color: var(--c-primary-2xlight);
+        opacity: 0.5;
+        background: var(--c-primary-2xlight);
     }
     ol, ul {
     padding-inline-start: 0;
     }
-    hr {
-    border-color: var(--c-primary-2xlight);
-    opacity: 0.5;
-    background: var(--c-primary-2xlight);
+    ul.topic {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 5px;
+        grid-row-gap: 0px;
     }
     @media (max-width: 924px){
-        article {
-            grid-template-columns: auto;
+        ul.topic {
+            grid-template-columns: 1fr;
         }
     }
 </style>
