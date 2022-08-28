@@ -2,10 +2,10 @@
 import links from "src/data/Footer";
 const { origin:link } = Astro.url
 ---
-<footer>
+<footer >
     <div class="container">
         <hr >
-        <ul class="nav">
+        <ul class="nav" data-nosnippet>
             <a href={ new URL("/rss.xml", link) }>
                 <span class="sr-only"> RSS Feed </span>
                 <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--material-symbols" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
@@ -32,7 +32,7 @@ const { origin:link } = Astro.url
             </a>
         </ul>
         <ul>
-            <li>
+            <li data-nosnippet>
                 <small>
                     مدونة مشخبط، خواطر وآراء <a href={links.about} class="secondary">حمد بنقالي</a>
                 </small>
