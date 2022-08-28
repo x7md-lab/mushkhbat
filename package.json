@@ -9,7 +9,7 @@
     "preview": "astro preview --host"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^0.7.0",
+    "@astrojs/mdx": "^0.10.2",
     "@astrojs/react": "^0.1.3",
     "astro": "^1.1.1",
     "react": "^18.1.0",
