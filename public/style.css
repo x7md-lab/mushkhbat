@@ -337,7 +337,15 @@ iframe[src*="you"] {
     aspect-ratio: 16/9;
     max-width: calc(100% - var(--unit) * 2);
 }
-
+iframe[src*="cloudflarestream"] {
+    margin: auto;
+	  margin-top: var(--space-s);
+    margin-bottom: var(--space-s);
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16/9;
+    max-width: calc(100% - var(--unit) * 2);
+}
 .bg-darker {
   background-color: var(--c-primary-2xdark);
 }
