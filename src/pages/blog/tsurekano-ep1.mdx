@@ -2,20 +2,28 @@
 layout: "@layouts/theme.astro"
 title: تحليل الحلقة الأولى من tsurekano
 date: 2022/08/28
-draft: false
+draft: true
 desc: "إنطباع وتحليل للحلقة الأولى من أنمي ابنة زوجة أبي -غير الشقيقة- هي صديقتي السابقة."
 image: /assets/images/tsurekano-ep1.jpg
 tags: ["anime"]
 isReview: true
 review: 4.1
-itemName: Mamahaha no Tsurego ga Motokano datta
-itemType: TVSeries
+itemReview: {
+    name: "Mamahaha no Tsurego ga Motokano datta",
+    type: "TVSeries"
+}
 ---
+import Ep from '@components/Ep.astro';
+
 > <p data-nosnippet>قد تحتوي هذه التدوينة على حرق للأحداث 🔥...</p>
 
 في تدوينة سابقة تحدث عن رأيي في أنمي Mamahaha no Tsurego ga Motokano datta ككل، ولكن الآن سأقوم بمراجعة الحلقة الأولى من اﻷنمي.
 
 وبدون مقدمات دعونا نبدأ...
+
+<Ep arName={`يرفض الثّنائيّ السّابق قول... "إنّها أشياء كهذه...!"`} 
+    enName="The Former Couple Refuses to Say... 'It's things like this...!'" 
+    airDate="Jul 6, 2022" />
 
 ## الأحداث
 تبدأ الحلقة الأولى بمشاجرة كلامية، بين يومي وميزيتو أمام باب المنزل

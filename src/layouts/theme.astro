@@ -12,9 +12,9 @@ if (isReview){
 review = { review: {
 			  "@type": "Review",
 			  "itemReviewed": {
-				"@type": content.itemType,
+				"@type": content.itemReview.type,
 				"image": content.image,
-				"name": content.itemName,
+				"name": content.itemReview.name,
 			  },
 			  "reviewRating": {
 				"@type": "Rating",
