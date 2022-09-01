@@ -2,12 +2,12 @@
 export async function onRequestGet({ params, env }) {
   // const info = JSON.stringify(params.query, null, 2);
   // return new Response(info);
-            const options = {
+    const options = {
             prefix: url.searchParams.get('prefix') ?? undefined,
             delimiter: url.searchParams.get('delimiter') ?? undefined,
             cursor: url.searchParams.get('cursor') ?? undefined,
             include: ['customMetadata', 'httpMetadata'],
-          }
+        }
   const listing = await env.MY_BUCKET.list(options)
       return new Response(JSON.stringify(listing), {headers: {
         'content-type': 'application/json; charset=UTF-8',
