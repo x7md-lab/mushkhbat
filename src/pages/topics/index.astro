@@ -1,5 +1,5 @@
 ---
-const posts =  [...await Astro.glob('../blog/*.mdx')].sort((b, a) => new Date(b.frontmatter?.date) - new Date(a.frontmatter?.date));
+const posts =  [...await Astro.glob('../blog/**/*.mdx')].sort((b, a) => new Date(b.frontmatter?.date) - new Date(a.frontmatter?.date));
 const tags =  [
         ... new Set(posts.map(post => post.frontmatter.tags).flat())
     ];

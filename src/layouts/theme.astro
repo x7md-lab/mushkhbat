@@ -2,8 +2,9 @@
 import Navbar from "@components/Navbar.astro";
 import Footer from "@components/Footer.astro";
 import { Seo } from "astro-seo-meta"
+import tagsName from "@data/Topics.js"
 // import Comment from "@components/Comment";
-import Youtube from "@components/Youtube.astro";
+// import Youtube from "@components/Youtube.astro";
 const {content} = Astro.props;
 const {origin} = Astro.url;
 const isReview = content.isReview;
@@ -44,6 +45,7 @@ const urlFix = (urlString)=> {
 	}
 	return new URL(urlString, origin).href
 }
+const topicName = tagsName[content.tags[0]].name;
 ---
 <html lang="ar" dir="rtl">
 	<head>
@@ -69,6 +71,17 @@ const urlFix = (urlString)=> {
             <div class="title">
                 <h1>{content.title}</h1>
 				<div class="datePost">
+					<nav aria-label="breadcrumb">
+						<ul>
+						  <li><a href="/blog/">المدونة</a></li>
+						  <li>
+							<a href={new URL(content.url + "/..", origin)}>
+								{topicName}
+							</a>
+						  </li>
+						  <li><a href={content.url} aria-current="page">{content.title}</a></li>
+						</ul>
+					</nav>
 					<p>{content.dateModified ? "عُدلت" : "كُتبت"} في <time class="textSize-s" datetime={new Date(content.dateModified || content.date).toISOString()} >{toHijri(content.dateModified || content.date)}</time></p>
 				</div>
 				<hr >
@@ -84,7 +97,7 @@ const urlFix = (urlString)=> {
 		<script type="application/ld+json" 
 		set:html={
 		JSON.stringify(
-			{
+			[{
 				"@context": "https://schema.org",
 				"@type": "BlogPosting",
 				"headline": content.title,
@@ -95,7 +108,29 @@ const urlFix = (urlString)=> {
 					"@type": "Person",
 					"name": "حمد بنقالي",
 					"url": "https://x7md.net/about-me"
-					}, ...review })
+					}, ...review 
+			},
+			{
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			"name": "المدونة > " + topicName + " > " + content.title,
+			"itemListElement": [{
+				"@type": "ListItem",
+				"position": 1,
+				"name": "التدوينات",
+				"item": new URL("/blog", origin)
+			},{
+				"@type": "ListItem",
+				"position": 2,
+				"name": topicName,
+				"item": new URL(content.tags[0].url, origin)
+			},{
+				"@type": "ListItem",
+				"position": 3,
+				"name": content.title
+			}]
+			}
+			])
 		}>
 		</script>
 	</body>
