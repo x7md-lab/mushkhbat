@@ -9,6 +9,7 @@
         "@layouts/*": ["src/layouts/*"],
         "@data/*": ["src/data/*"],
         "@blogs/*": ["src/blog/*"],
+        "@utilities/*": ["src/utilities/*"],
       }
     }
 }

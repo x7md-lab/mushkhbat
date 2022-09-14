@@ -1,0 +1,40 @@
+---
+const { arName, enName, airDate } = Astro.props
+import toHijri from '@utilities/toHijri.js';
+---
+<table>
+    <thead>
+    <tr>
+        <th id="title" colspan={2}>معلومات عن الحلقة</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>اسم الحلقة</td>
+            <td>
+                <span set:text={arName}></span>
+            </td>
+        </tr>
+        <tr>
+            <td>اسم الحلقة بالإنجليزية</td>
+        <td>
+            <span lang="en" dir="ltr" set:text={enName}></span>
+        </td>
+        </tr>
+        <tr>
+            <td>تاريخ البث</td>
+        <td>
+            <time 
+            datetime={new Date(airDate).toISOString()} 
+            set:text= {toHijri(airDate)}>
+            </time>
+        </td>
+        </tr>
+    </tbody>
+</table>
+
+<style>
+    #title {
+        text-align: center;
+    }
+</style>
