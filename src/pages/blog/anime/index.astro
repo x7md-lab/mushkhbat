@@ -1,0 +1,86 @@
+---
+import Pages from "@layouts/pages.astro";
+const postImportResult = import.meta.glob('./**/*.mdx', { eager: true });
+const posts = Object.values(postImportResult).sort((a, b) => new Date(b.frontmatter?.date) - new Date(a.frontmatter?.date));
+---
+<Pages content={{title: "التدوينات"}}>
+    <div class="pt-3">
+		<section id="hero">
+			<h1 class="title">قائمة بتدوينات عن اﻷنمي</h1>
+			<p>
+                الرسوم المتحركة اليابانية (أنمي)، من وقت لأخر أتابع إحداها... ولكنني لست ذاك الشخص المهووس بها (Weeb) وأفضل الكرتون الأمريكي على الأنمي في الغالب.
+			</p>
+		</section>
+        <section>
+            <ol>
+                {posts.map((item)=> {
+                    return (
+                        <li class="article">
+                           
+                            <article>
+                            <a href={item.url}>
+                                <img class="image_prv" src={item.frontmatter?.imagePrv || item.frontmatter?.image} />
+                            </a>
+                            <section>
+                                <a href={item.url}>
+                                <h1>{item.frontmatter?.title}</h1>
+                                </a>
+                                <p>
+                                    {item.frontmatter?.desc}
+                                </p>
+                            </section>
+                            </article>
+                            <hr />
+                        </li>
+                    )
+                })}
+            </ol>
+        </section>
+	</div>
+</Pages>
+<style>
+	h1.title {
+    color: var(--c-primary);
+	}
+	.pt-3 {
+		padding-top: 0.75rem;
+	}
+	section#hero {
+		text-align: center;
+    	padding: calc(var(--unit) * 2);
+		padding-top: calc(var(--unit) * 4);
+		padding-bottom: calc(var(--unit) * 4);
+	}
+    li.article {
+        text-align: right;
+        list-style: none;
+    }
+    .article a {
+        color: inherit;
+    }
+    img.image_prv {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    aspect-ratio: 16/9;
+    }
+    article {
+    display: grid;
+    grid-template-columns: 195px max-content;
+    grid-column-gap: 25px;
+    }
+    ol, ul {
+    padding-inline-start: 0;
+    }
+    hr {
+    border-color: var(--c-primary-2xlight);
+    opacity: 0.5;
+    background: var(--c-primary-2xlight);
+    }
+    @media (max-width: 924px){
+        article {
+            grid-template-columns: auto;
+        }
+    }
+</style>
